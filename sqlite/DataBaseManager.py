@@ -54,7 +54,7 @@ class DataBaseManager():
         cur.execute(sql, product)
         return cur.lastrowid
 
-    def is_an_existing_product(self, conn, code):
+    def is_an_existing_materia(self, conn, materia):
         '''
         Query if exist a role in the table
         :param conn:
@@ -62,9 +62,9 @@ class DataBaseManager():
         :param role_name:
         :return:
         '''
-        sql = '''SELECT * FROM product WHERE id = ?'''
+        sql = '''SELECT 1 FROM Materias WHERE id = ? and nombre=? and alumno=? and calificacion=? LIMIT 1'''
         cur = conn.cursor()
-        cur.execute(sql, (code,))
+        cur.execute(sql,  materia)
 
         rows = cur.fetchall()
 
